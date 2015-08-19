@@ -1,8 +1,14 @@
-<h1>This is the place holder for Index</h1>
 
-<% @recipe.each do |recipe| %>
 
-<p><h2><%= link_to recipe.title, recipe %></h1></p>
+  <% @recipe.each do |recipe| %>
+
+
+      <%= link_to recipe do %>
+        <% image_tag recipe.image.url(:medium) %>
+      <% end %>
+
+      <h2><%= link_to recipe.title, recipe %></h1>
+
 
 
 <% end %>
