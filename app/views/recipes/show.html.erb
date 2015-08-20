@@ -9,9 +9,9 @@
           <%= @recipe.title %>
         </h1>
         <p class="description">
-          <%= @recipe.description %>
+          <%= @recipe.description %> <br>
+            Submitted By : <%= @recipe.user.email %>
         </p>
-        
       </div>
     </div>
   </div>
@@ -34,7 +34,7 @@
         <ul>
           <% @recipe.directions.each do |direction| %>
             <li>
-              <%= direction.step %>
+              <%= direction.name %>
             </li>
           <% end %>
         </ul>
@@ -45,9 +45,11 @@
     <div class="col-md-12">
       <%= link_to "Back", root_path, class: "btn btn-default" %>
 
-        <%= link_to "Edit", edit_recipe_path, class: "btn btn-default" %>
-        <%= link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default" %>
+        <% if @recipe.user == current_user %>
 
+          <%= link_to "Edit", edit_recipe_path, class: "btn btn-default" %>
+          <%= link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default" %>
+        <% end %>
     </div>
   </div>
 </div>
